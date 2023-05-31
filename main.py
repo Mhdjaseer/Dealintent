@@ -16,16 +16,18 @@ with open("Transcribe_txt_file/Transcribe.txt", "r") as f:
     file_contents = f.read()
 # print(file_contents)
 
-
-response=openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {
-            "model": "gpt-3.5-turbo",
-            "messages": [{"role": "user", "content":file_contents +"find and extract business ideas from the following text, then create a compelling headline and provide a concise summary."}],
-        }
-    ]
-)
+try:
+    response=openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "model": "gpt-3.5-turbo",
+                "messages": [{"role": "user", "content":file_contents +"find and extract business ideas from the following text, then create a compelling headline and provide a concise summary."}],
+            }
+        ]
+    )
+except:
+    print("check your billing detials in GPT ")
 
 generated_text = response.choices[0].message["content"]
 # print(generated_text)
