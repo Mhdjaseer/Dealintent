@@ -26,14 +26,14 @@ try:
             }
         ]
     )
+    generated_text = response.choices[0].message["content"]
+    # print(generated_text)
+
+    # Save the generated result to a text file
+    with open("generated_result.txt", "w") as output_file:
+        output_file.write(generated_text)
+
+    print("Generated result saved to generated_result.txt")
 except:
     print("check your billing detials in GPT ")
 
-generated_text = response.choices[0].message["content"]
-# print(generated_text)
-
-# Save the generated result to a text file
-with open("generated_result.txt", "w") as output_file:
-    output_file.write(generated_text)
-
-print("Generated result saved to generated_result.txt")
